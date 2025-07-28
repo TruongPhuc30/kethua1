@@ -41,7 +41,7 @@ public class Cylinder extends Circle {
      * @param color  màu sắc hình trụ
      * @param height chiều cao hình trụ
      */
-    public Cylinder(double radius, String color, double height) {
+    public Cylinder(double radius, double height, String color) {
         super(radius, color); // Gọi constructor lớp cha
         this.height = height;
     }
