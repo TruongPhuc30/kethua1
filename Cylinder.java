@@ -1,74 +1,83 @@
 /**
- * Lớp Cylinder kế thừa từ Circle, thêm chiều cao để biểu diễn hình trụ.
+ * Lớp Cylinder mở rộng từ lớp Circle,
+ * đại diện cho hình trụ có chiều cao và bán kính.
  */
 public class Cylinder extends Circle {
-    private double height; // chiều cao của hình trụ
+    private double height;  // Chiều cao của hình trụ
 
     /**
-     * Constructor mặc định: bán kính = 1.0, màu = "red", chiều cao = 1.0.
+     * Constructor mặc định tạo hình trụ với bán kính 1.0, màu "red" và chiều cao 1.0.
      */
     public Cylinder() {
-        super();           // gọi Circle()
+        super(); // Gọi constructor lớp cha (Circle)
         this.height = 1.0;
     }
 
     /**
-     * Constructor khởi tạo hình trụ với chiều cao tùy chọn,
-     * các thuộc tính còn lại dùng mặc định từ Circle.
+     * Constructor khởi tạo hình trụ với bán kính cho trước, màu "red" và chiều cao 1.0.
      *
+     * @param radius bán kính hình trụ
+     */
+    public Cylinder(double radius) {
+        super(radius); // Goi constructor lop cha
+        this.height = 1.0;
+    }
+    
+    /**
+     * Constructor khởi tạo hình trụ với bán kính và chiều cao cho trước, màu "red".
+     *
+     * @param radius bán kính hình trụ
      * @param height chiều cao hình trụ
      */
-    public Cylinder(double height) {
-        super();           // Circle mặc định
+    public Cylinder(double radius, double height) {
+        super(radius); // Gọi constructor lớp cha
+        this.height = height;
+    }
+    
+    /**
+     * Constructor khởi tạo hình trụ với bán kính, màu sắc và chiều cao cho trước.
+     *
+     * @param radius bán kính hình trụ
+     * @param color  màu sắc hình trụ
+     * @param height chiều cao hình trụ
+     */
+    public Cylinder(double radius, String color, double height) {
+        super(radius, color); // Gọi constructor lớp cha
         this.height = height;
     }
 
     /**
-     * Constructor khởi tạo hình trụ với bán kính và chiều cao tùy chọn,
-     * màu mặc định là "red".
+     * Lấy chiều cao của hình trụ.
      *
-     * @param radius bán kính đáy
-     * @param height chiều cao hình trụ
+     * @return chiều cao
      */
-    public Cylinder(double radius, double height) {
-        super(radius);     // Circle(radius)
-        this.height = height;
-    }
-
     public double getHeight() {
         return height;
     }
 
+    /**
+     * Thiết lập chiều cao mới cho hình trụ.
+     *
+     * @param height chiều cao cần thiết lập
+     */
     public void setHeight(double height) {
         this.height = height;
     }
 
     /**
-     * Tính diện tích toàn phần hình trụ:
-     * 2 đáy + diện tích xung quanh = 2πr² + 2πrh.
+     * Tính thể tích của hình trụ.
+     * Công thức: diện tích đáy * chiều cao
      *
-     * @return tổng diện tích mặt ngoài
-     */
-    @Override
-    public double getArea() {
-        double base = super.getArea();
-        double lateral = 2 * PI * getRadius() * height;
-        return 2 * base + lateral;
-    }
-
-    /**
-     * Tính thể tích hình trụ: V = πr²h.
-     *
-     * @return thể tích
+     * @return thể tích hình trụ
      */
     public double getVolume() {
-        return super.getArea() * height;
+        return getArea() * height;
     }
 
     /**
-     * Trả về chuỗi mô tả chi tiết hình trụ.
+     * Trả về chuỗi mô tả hình trụ theo định dạng: Cylinder[Circle[radius=...,color=...],height=...]
      *
-     * @return Cylinder[Circle[radius=...,color=...],height=...]
+     * @return chuỗi mô tả hình trụ
      */
     @Override
     public String toString() {
